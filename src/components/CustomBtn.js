@@ -1,6 +1,8 @@
-import React from 'react'
+
+import React, { useState } from "react";
 import {Button} from '@material-ui/core'
 import {withStyles} from '@material-ui/core/styles'
+import Counter from './Counter';
 
 const StyledButton = withStyles({
     root: {
@@ -25,9 +27,19 @@ const StyledButton = withStyles({
     },
   })(Button);
 
+
 function CustomBtn(props) {
+  const [count, setCount] = useState(0);
+  let incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  let decrementCount = () => {
+    setCount(count - 1);
+  };
+    let { action, txt } = props;
     return (
-        <StyledButton variant="contained">{props.txt}</StyledButton>
+        <StyledButton variant="contained" onClick={action}>{props.txt}</StyledButton>
     )
 }
 
